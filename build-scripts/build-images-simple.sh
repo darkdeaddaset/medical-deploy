@@ -58,9 +58,10 @@ pull_or_clone_proj common-module https://github.com/darkdeaddaset/common-module.
 pull_or_clone_proj medical-monitoring https://github.com/darkdeaddaset/medical-monitoring.git
 pull_or_clone_proj message-analyzer https://github.com/darkdeaddaset/message-analyzer.git
 pull_or_clone_proj person-service https://github.com/darkdeaddaset/person-service.git
+pull_or_clone_proj consumer_module https://github.com/darkdeaddaset/consumer_module.git
 
 build_lib common-module
-build_jar medical-monitoring message-analyzer person-service
+build_jar medical-monitoring message-analyzer person-service consumer_module
 
 
 APP_VERSION=0.0.1-SNAPSHOT
@@ -69,3 +70,6 @@ echo "Building Docker images"
 build_basic_images ./medical-monitoring/core/target/medical-monitoring-${APP_VERSION}.jar application/medical-monitoring
 build_basic_images ./message-analyzer/core/target/message-analyzer-${APP_VERSION}.jar application/message-analyzer
 build_basic_images ./person-service/core/target/person-service-${APP_VERSION}.jar application/person-service
+
+APP_VERSION=1.0-SNAPSHOT
+build_basic_images ./consumer_module/target/consumer_module-${APP_VERSION}.jar application/consumer_module

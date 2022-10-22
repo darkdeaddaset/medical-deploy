@@ -48,7 +48,7 @@ services:
 
   rabbitmq:
     hostname: 'rabbit'
-    image: rabbitmq:3.10-managment
+    image: rabbitmq:3.10-management
     healthcheck:
       test: rabbitmq-diagnostics -q ping
       interval: 20s
