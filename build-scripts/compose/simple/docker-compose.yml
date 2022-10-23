@@ -1,6 +1,20 @@
 version: '2.4'
 
 services:
+  rabbitmq:
+    hostname: 'rabbit'
+    image: rabbitmq:3.10-management
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 20s
+      timeout: 10s
+      retries: 3
+    environment:
+      SERVER_PORT: 8080
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+
   message-analyzer:
     image: application/message-analyzer:simple
     healthcheck:
@@ -44,18 +58,3 @@ services:
         SERVER_PORT: 8080
     ports:
         - 8091:8080
-
-
-  rabbitmq:
-    hostname: 'rabbit'
-    image: rabbitmq:3.10-management
-    healthcheck:
-      test: rabbitmq-diagnostics -q ping
-      interval: 20s
-      timeout: 10s
-      retries: 3
-    environment:
-      SERVER_PORT: 8080
-    ports:
-      - '5672:5672'
-      - '15672:15672'

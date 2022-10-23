@@ -73,3 +73,6 @@ build_basic_images ./person-service/core/target/person-service-${APP_VERSION}.ja
 
 APP_VERSION=1.0-SNAPSHOT
 build_basic_images ./consumer_module/target/consumer_module-${APP_VERSION}.jar application/consumer_module
+
+cd build-scripts/compose/simple/
+sudo docker-compose up -d
